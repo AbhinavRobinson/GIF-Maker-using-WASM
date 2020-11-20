@@ -1,6 +1,6 @@
-# New Project
+# GIF Maker with FFmpeg.wasm on React
 
-> ✨ Bootstrapped with Create Snowpack App (CSA).
+    🐱‍👤 Offline GIF maker using FFmpeg over Web Assembly and React.
 
 ## Available Scripts
 
