@@ -39,11 +39,14 @@ function App() {
    * @description empty array at end, so function only runs once.
    */)
 
-  return (
+  /**
+   * @description show page once ready, else show Loading
+   */
+  return ready ? (
     <div className="App">
       
     </div>
-  );
+  ) : (<p>🤔 Loading ... 🤔</p>)
 }
 
 export default App;
