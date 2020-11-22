@@ -19,6 +19,11 @@ function App() {
   const [ready, setReady] = useState(false);
 
   /**
+   * @description prepare to ingest video
+   */
+  const [video, setVideo] = useState();
+
+  /**
    * @description load : async load ffmpeg when needed over CDN
    */
   const load = async () => {
@@ -45,8 +50,18 @@ function App() {
   return ready ? (
     <div className="App">
       
+      {/* Get Video from user and present */}
+      { video && <video
+                    controls
+                    width="250"
+                    src={URL.createObjectURL(video)}>
+        </video>}
+
+      {/* Ingest Video */}
+      <input type="file" onChange={(e) => setVideo(e.target.files?.item(0))}></input>
+
     </div>
-  ) : (<p>🤔 Loading ... 🤔</p>)
+  ) : (<p>🤔 Loading ... 🤔</p>);
 }
 
 export default App;
