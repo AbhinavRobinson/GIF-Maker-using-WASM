@@ -24,6 +24,11 @@ function App() {
   const [video, setVideo] = useState();
 
   /**
+   * @description
+   */
+  const [gif, setGif] = useState();
+
+  /**
    * @description load : async load ffmpeg when needed over CDN
    */
   const load = async () => {
@@ -43,6 +48,28 @@ function App() {
    /**
    * @description empty array at end, so function only runs once.
    */)
+
+  /**
+   * @function: converts video to gif
+   */
+  const convertToGif = async () => {
+
+    // Writes file to memory
+    ffmpeg.FS('writeFile', 'test.mp4', await fetchFile(video));
+
+    // run Ffmpeg cmd (filename, timeslice, speed, format, outFile name)
+    await ffmpeg.run('-i', 'test.mp4', '-t', '2.5', '-ss', '2.0', '-f', 'gif', 'out.gif');
+
+    // Read result 
+    const data = ffmpeg.FS('readFile', 'out.gif');
+
+    // Create URL
+    const url = URL.createObjectURL(new Blob([data.buffer], { type: 'image/gif'}));
+   
+    // update component state
+    setGif(url)
+
+  }
 
   /**
    * @description show page once ready, else show Loading
