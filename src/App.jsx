@@ -24,7 +24,7 @@ function App() {
   const [video, setVideo] = useState();
 
   /**
-   * @description
+   * @description GIF state
    */
   const [gif, setGif] = useState();
 
