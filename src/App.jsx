@@ -64,7 +64,7 @@ function App() {
     ffmpeg.FS('writeFile', 'test.mp4', await fetchFile(video));
 
     // run Ffmpeg cmd (filename, timeslice, speed, format, outFile name)
-    await ffmpeg.run('-i', 'test.mp4', '-t', '2.5', '-ss', '2.0', '-f', 'gif', 'out.gif');
+    await ffmpeg.run('-i', 'test.mp4', '-t', '10', '-ss', '3.0', '-f', 'gif', 'out.gif');
 
     // Read result 
     const data = ffmpeg.FS('readFile', 'out.gif');
@@ -82,28 +82,28 @@ function App() {
    */
   return ready ? (
     <div className="App">
-      
-      {/* Get Video from user and present */}
-      { video && <video
-                    controls
-                    width="250"
-                    src={URL.createObjectURL(video)}>
-        </video>}
+      <div className="App-header">
+        {/* Get Video from user and present */}
+        { video && <video
+                      controls
+                      width="500"
+                      src={URL.createObjectURL(video)}>
+          </video>}
 
-      {/* Ingest Video */}
-      <input type="file" onChange={(e) => setVideo(e.target.files?.item(0))}></input>
+        {/* Ingest Video */}
+        <input type="file" onChange={(e) => setVideo(e.target.files?.item(0))}></input>
 
-      {/* Title */}
-      <h3>GIF</h3>
+        {/* Title */}
+        <h3>GIF</h3>
 
-      {/* Convert to GIF button */}
-      <button onClick={convertToGif}>Convert Video to Gif</button>
+        {/* Convert to GIF button */}
+        <button onClick={convertToGif}>Convert Video to Gif</button>
 
-      {/* Show GIF once available */}
-      { gif && <img src={gif} width="250" />}
-
+        {/* Show GIF once available */}
+        { gif && <img src={gif} width="500" />}
+      </div>
     </div>
-  ) : (<p>🤔 Loading ... 🤔</p>);
+  ) : (<p className="App-header">🤔 Loading ... 🤔</p>);
 }
 
 export default App;
