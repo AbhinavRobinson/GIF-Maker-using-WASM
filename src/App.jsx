@@ -64,7 +64,7 @@ function App() {
     ffmpeg.FS('writeFile', 'test.mp4', await fetchFile(video));
 
     // run Ffmpeg cmd (filename, timeslice, speed, format, outFile name)
-    await ffmpeg.run('-i', 'test.mp4', '-t', '10', '-ss', '3.0', '-f', 'gif', 'out.gif');
+    await ffmpeg.run('-i', 'test.mp4', '-t', '8', '-ss', '3', '-f', 'gif', 'out.gif');
 
     // Read result 
     const data = ffmpeg.FS('readFile', 'out.gif');
@@ -94,7 +94,7 @@ function App() {
         <input type="file" onChange={(e) => setVideo(e.target.files?.item(0))}></input>
 
         {/* Title */}
-        <h3>GIF</h3>
+        <h3>Select a video and export as GIF</h3>
 
         {/* Convert to GIF button */}
         <button onClick={convertToGif}>Convert Video to Gif</button>
